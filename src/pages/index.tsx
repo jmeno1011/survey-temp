@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '@/components/home/Header'
 import InfoInputForm from '@/components/home/InfoInputForm'
-import { useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -9,9 +9,30 @@ export default function Home() {
   const [ages, setAges] = useState("");
   const [sex, setSex] = useState("");
 
-  const phoneRef = useRef(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
 
-  const onChangePhone = ()=>{}
+  const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
+    if (phoneRef.current) {
+      const value = phoneRef.current.value.replace(/\D+/g, "");
+      const phoneLength = 11;
+      let result = "";
+      for (let i = 0; i < value.length && i < phoneLength; i++) {
+        switch (i) {
+          case 3:
+            result += "-";
+            break;
+          case 7:
+            result += "-";
+            break;
+          default:
+            break;
+        }
+        result += value[i];
+      }
+      phoneRef.current.value = result;
+      setPhone(e.target.value);
+    }
+  }
 
   return (
     <>
@@ -23,7 +44,7 @@ export default function Home() {
       </Head>
       <Header />
       <div >
-        <InfoInputForm 
+        <InfoInputForm
           email={email}
           setEmail={setEmail}
           phone={phone}

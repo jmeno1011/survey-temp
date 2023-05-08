@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 const agesRange = ["10대", "20대", "30대", "40대", "50대", "60대", "70대 이상"];
 
 interface InfoInputFormProps {
   email: string;
-  setEmail: () => void;
+  setEmail: (value: string) => void;
   phone: string;
-  phoneRef: Object;
-  onChangePhone: () => void;
+  phoneRef: React.RefObject<HTMLInputElement>;
+  onChangePhone: (e: ChangeEvent<HTMLInputElement>) => void;
   ages: string;
-  setAges: () => void;
+  setAges: (value: string) => void;
   sex: string;
-  setSex: () => void;
+  setSex: (value: string) => void;
 }
 
 const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, setAges, sex, setSex }: InfoInputFormProps) => {
