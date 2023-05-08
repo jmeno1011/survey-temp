@@ -1,10 +1,18 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
 import Header from '@/components/home/Header'
-
-const inter = Inter({ subsets: ['latin'] })
+import InfoInputForm from '@/components/home/InfoInputForm'
+import { useRef, useState } from 'react'
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [ages, setAges] = useState("");
+  const [sex, setSex] = useState("");
+
+  const phoneRef = useRef(null);
+
+  const onChangePhone = ()=>{}
+
   return (
     <>
       <Head>
@@ -14,6 +22,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <div >
+        <InfoInputForm 
+          email={email}
+          setEmail={setEmail}
+          phone={phone}
+          phoneRef={phoneRef}
+          onChangePhone={onChangePhone}
+          ages={ages}
+          setAges={setAges}
+          sex={sex}
+          setSex={setSex}
+        />
+      </div>
     </>
   )
 }
