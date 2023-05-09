@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react'
+import styles from "./InfoInputForm.module.css"
 
 const agesRange = ["10대", "20대", "30대", "40대", "50대", "60대", "70대 이상"];
 
@@ -16,7 +17,7 @@ interface InfoInputFormProps {
 
 const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, setAges, sex, setSex }: InfoInputFormProps) => {
   return (
-    <div className="agree-input-group">
+    <div className={styles.layout}>
       <div className="input-row">
         <label>이메일 </label>
         <input

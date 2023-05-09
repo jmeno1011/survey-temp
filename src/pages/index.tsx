@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Header from '@/components/home/Header'
 import InfoInputForm from '@/components/home/InfoInputForm'
 import { ChangeEvent, useRef, useState } from 'react'
+import Privacy from '@/components/home/Privacy';
+import styles from "@/styles/Home.module.css";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -43,19 +45,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div >
-        <InfoInputForm
-          email={email}
-          setEmail={setEmail}
-          phone={phone}
-          phoneRef={phoneRef}
-          onChangePhone={onChangePhone}
-          ages={ages}
-          setAges={setAges}
-          sex={sex}
-          setSex={setSex}
-        />
-      </div>
+      <main className={styles.main}>
+        <div className={styles.wrapper}>
+          <InfoInputForm
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            phoneRef={phoneRef}
+            onChangePhone={onChangePhone}
+            ages={ages}
+            setAges={setAges}
+            sex={sex}
+            setSex={setSex}
+          />
+          <Privacy />
+        </div>
+      </main>
     </>
   )
 }
