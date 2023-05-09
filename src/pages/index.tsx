@@ -10,6 +10,7 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [ages, setAges] = useState("");
   const [sex, setSex] = useState("");
+  const [check, setCheck] = useState(false);
 
   const phoneRef = useRef<HTMLInputElement>(null);
 
@@ -58,7 +59,7 @@ export default function Home() {
             sex={sex}
             setSex={setSex}
           />
-          <Privacy />
+          <Privacy check={check} setCheck={setCheck} />
         </div>
       </main>
     </>

@@ -15,15 +15,15 @@
 
 @media (max-width: 768px) {
   .layout {
-      height: 130px;
-      margin-bottom: 12px;
+    height: 130px;
+    margin-bottom: 12px;
   }
 }
 
 @media (min-width: 768px) {
   .layout {
-      height: 230px;
-      margin-bottom: 24px;
+    height: 230px;
+    margin-bottom: 24px;
   }
 }
 
@@ -44,28 +44,46 @@
   border-radius: 10px;
 }
 
-.layout h2{
+.layout h2 {
   margin-bottom: 8px;
   text-align: center;
   font-weight: bold;
 }
-.layout h3{
+
+.layout h3 {
   font-weight: bold;
   padding-top: 8px;
   padding-bottom: 4px;
 }
-.layout > p{
+
+.layout>p {
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-.list1{
+.list1 {
   padding-left: 16px;
 }
-.list2{
+
+.list2 {
   padding-left: 8px;
 }
-.numSpan{
+
+.numSpan {
   margin-right: 4px;
   margin-left: -12px;
+}
+
+.checkboxBlock {
+  display: flex;
+}
+.checkbox{
+  margin-right: 8px;
+}
+.descriptionBlock h6{
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+.descriptionBlock p{
+  font-size: 0.75rem;
 }

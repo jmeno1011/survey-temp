@@ -1,7 +1,12 @@
 import React from 'react'
 import styles from "./Privacy.module.css"
 
-const Privacy = () => {
+interface PrivacyProps {
+  check: boolean;
+  setCheck: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Privacy = ({ check, setCheck }: PrivacyProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.layout}>
@@ -30,6 +35,26 @@ const Privacy = () => {
         <h3>3. 보유 및 이용기간</h3>
         <p>이용자의 개인정보는 개인정보의 수집 및 이용목적이 달성되면 지체 없이 파기합니다.</p>
         <h3>4. 개인정보의 수집 이용 및 고유식별 정보 수집 동의에 대하여 거부할 수 있으며, 동의 거부시 설문 서비스의 제한이 있을 수 있습니다.</h3>
+      </div>
+      <div className={styles.checkboxBlock}>
+        <div className={styles.checkbox}>
+          <input
+            type={"checkbox"}
+            checked={check}
+            onChange={() => setCheck(!check)}
+            id="agree"
+          />
+        </div>
+        <div className={styles.descriptionBlock}>
+          <label htmlFor="agree">
+            <h6>개인정보 수집/이용 동의 </h6>
+          </label>
+
+          <p>
+            이 서비스를 이용할 경우 제공된 정보는 귀하의 마음건강에
+            도움을 주기 위한 것으로 수집됨에 있어 동의합니다.
+          </p>
+        </div>
       </div>
     </div>
   )
