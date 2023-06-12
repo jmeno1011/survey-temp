@@ -37,6 +37,21 @@ export default function Home() {
     }
   }
 
+  const onClickNext = ()=>{
+    if (phone === "" || phone.length !== 13) {
+      alert("핸드폰 번호를 입력해주세요.");
+    } else if (sex === "") {
+      alert("성별을 선택해주세요.");
+    } else if (ages === "") {
+      alert("연령대를 선택해주세요.");
+    } else if (!check) {
+      alert("개인정보 수집/이용에 동의해주세요.");
+    } 
+    // else {
+    //   setAgree(true);
+    // }
+  }
+
   return (
     <>
       <Head>
@@ -60,6 +75,9 @@ export default function Home() {
             setSex={setSex}
           />
           <Privacy check={check} setCheck={setCheck} />
+        </div>
+        <div className={styles.btnCenter} onClick={onClickNext}>
+          <button disabled={!check}>넘어가기</button>
         </div>
       </main>
     </>

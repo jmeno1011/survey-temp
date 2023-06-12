@@ -13,3 +13,33 @@
     border-right: 1px solid silver;
   }
 }
+
+.inputRow{
+  display: flex;
+  flex-direction: column;
+}
+.inputRow label{
+  padding: 8px 0;
+  margin-bottom: 4px;
+}
+
+.inputRow > input, .inputRadio {
+  padding: 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.inputRow > input:focus{
+  border: 2px solid rgb(33, 142, 213);
+}
+
+.inputRadio{
+  display: flex;
+  flex-flow: row wrap;
+}
+.inputRadio label{
+  padding: 0 4px;
+}
+.inputRadio input{
+  margin: 0 4px;
+}

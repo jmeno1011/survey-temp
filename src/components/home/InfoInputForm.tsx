@@ -18,7 +18,7 @@ interface InfoInputFormProps {
 const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, setAges, sex, setSex }: InfoInputFormProps) => {
   return (
     <div className={styles.layout}>
-      <div className="input-row">
+      <div className={styles.inputRow}>
         <label>이메일 </label>
         <input
           type={"email"}
@@ -27,7 +27,7 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
           placeholder="example@example.com"
         />
       </div>
-      <div className="input-row">
+      <div className={styles.inputRow}>
         <label>전화번호</label>
         <input
           type={"text"}
@@ -37,9 +37,9 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
           placeholder=" '-' 없이 핸드폰 입력"
         />
       </div>
-      <div className="input-row">
+      <div className={styles.inputRow}>
         <label>연령 선택 </label>
-        <div className="input-radio">
+        <div className={styles.inputRadio}>
           {agesRange.map((age: string) => (
             <label key={age}>
               <input
@@ -54,9 +54,9 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
           ))}
         </div>
       </div>
-      <div className="input-row">
+      <div className={styles.inputRow}>
         <label>성별 </label>
-        <div className="input-radio">
+        <div className={styles.inputRadio}>
           <label>
             <input
               type={"radio"}

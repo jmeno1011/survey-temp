@@ -1,4 +1,4 @@
-.main{
+.main {
   background-color: #fff;
 }
 
@@ -15,6 +15,33 @@
     flex-direction: row;
   }
 }
-.wrapper{
+
+.wrapper {
   padding: 16px;
+}
+
+.btnCenter {
+  padding: 0 16px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnCenter button {
+  background-color: rgb(33 142 213);
+  outline: none;
+  border: 0;
+  color: #fff;
+  padding: 8px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btnCenter button:disabled {
+  background-color: rgb(66, 72, 76);
+}
+
+.btnCenter button:hover:enabled {
+  background-color: rgb(36, 91, 127);
 }
