@@ -19,7 +19,9 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
   return (
     <div className={styles.layout}>
       <div className={styles.inputRow}>
+      <div className={styles.inputRowLabel}>
         <label>이메일 </label>
+      </div>
         <input
           type={"email"}
           onChange={(e) => setEmail(e.target.value)}
@@ -28,7 +30,10 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
         />
       </div>
       <div className={styles.inputRow}>
-        <label>전화번호</label>
+        <div className={styles.inputRowLabel}>
+          <span></span>
+          <label>전화번호</label>
+        </div>
         <input
           type={"text"}
           onChange={onChangePhone}
@@ -38,7 +43,10 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
         />
       </div>
       <div className={styles.inputRow}>
+      <div className={styles.inputRowLabel}>
+      <span></span>
         <label>연령 선택 </label>
+      </div>
         <div className={styles.inputRadio}>
           {agesRange.map((age: string) => (
             <label key={age}>
@@ -55,7 +63,10 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
         </div>
       </div>
       <div className={styles.inputRow}>
+      <div className={styles.inputRowLabel}>
+        <span></span>
         <label>성별 </label>
+      </div>
         <div className={styles.inputRadio}>
           <label>
             <input

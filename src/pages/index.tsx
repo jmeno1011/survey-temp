@@ -4,8 +4,11 @@ import InfoInputForm from '@/components/home/InfoInputForm'
 import { ChangeEvent, useRef, useState } from 'react'
 import Privacy from '@/components/home/Privacy';
 import styles from "@/styles/Home.module.css";
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  let router = useRouter();
+  
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [ages, setAges] = useState("");
@@ -46,7 +49,9 @@ export default function Home() {
       alert("연령대를 선택해주세요.");
     } else if (!check) {
       alert("개인정보 수집/이용에 동의해주세요.");
-    } 
+    } else{
+      router.push('/survey')
+    }
     // else {
     //   setAgree(true);
     // }
