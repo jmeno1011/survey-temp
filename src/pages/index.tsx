@@ -68,6 +68,14 @@ export default function Home() {
     }))
   }
 
+  const onChangeHandle = (e: ChangeEvent<HTMLInputElement>)=>{
+    const {name, value} = e.target;
+    setInfo(prev=>({
+      ...prev,
+      [name]: value
+    }))
+  }
+  
   return (
     <>
       <Head>
@@ -83,6 +91,7 @@ export default function Home() {
             info={info}
             phoneRef={phoneRef}
             onChangePhone={onChangePhone}
+            onChangeHandle={onChangeHandle}
           />
           <Privacy check={info.check} onChangeCheck={onChangeCheck} />
         </div>
