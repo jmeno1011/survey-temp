@@ -3,10 +3,10 @@ import styles from "./Privacy.module.css"
 
 interface PrivacyProps {
   check: boolean;
-  setCheck: React.Dispatch<React.SetStateAction<boolean>>;
+  onChangeCheck: ()=>void;
 }
 
-const Privacy = ({ check, setCheck }: PrivacyProps) => {
+const Privacy = ({ check, onChangeCheck }: PrivacyProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.layout}>
@@ -39,10 +39,11 @@ const Privacy = ({ check, setCheck }: PrivacyProps) => {
       <div className={styles.checkboxBlock}>
         <div className={styles.checkbox}>
           <input
+            id="agree"
             type={"checkbox"}
             checked={check}
-            onChange={() => setCheck(!check)}
-            id="agree"
+            onChange={onChangeCheck}
+            value={check?"":""}
           />
         </div>
         <div className={styles.descriptionBlock}>

@@ -5,15 +5,17 @@ import { ChangeEvent, useRef, useState } from 'react'
 import Privacy from '@/components/home/Privacy';
 import styles from "@/styles/Home.module.css";
 import { useRouter } from 'next/router';
+import { simpleInfo } from '@/types';
 
 export default function Home() {
   let router = useRouter();
-  
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [ages, setAges] = useState("");
-  const [sex, setSex] = useState("");
-  const [check, setCheck] = useState(false);
+
+  const [info, setInfo] = useState<simpleInfo>({
+    phone: '',
+    ages: '',
+    sex: '',
+    check: false
+  });
 
   const phoneRef = useRef<HTMLInputElement>(null);
 
@@ -36,25 +38,34 @@ export default function Home() {
         result += value[i];
       }
       phoneRef.current.value = result;
-      setPhone(e.target.value);
+      setInfo((prev) => ({
+        ...prev,
+        phone: e.target.value
+      }));
     }
   }
 
-  const onClickNext = ()=>{
-    if (phone === "" || phone.length !== 13) {
+  const onClickNext = () => {
+    if (info.phone === "" || info.phone.length !== 13) {
       alert("핸드폰 번호를 입력해주세요.");
-    } else if (sex === "") {
+    } else if (info.sex === "") {
       alert("성별을 선택해주세요.");
-    } else if (ages === "") {
+    } else if (info.ages === "") {
       alert("연령대를 선택해주세요.");
-    } else if (!check) {
+    } else if (!info.check) {
       alert("개인정보 수집/이용에 동의해주세요.");
-    } else{
+    } else {
       router.push('/survey')
     }
-    // else {
-    //   setAgree(true);
-    // }
+
+    console.log("info", info);
+  }
+
+  const onChangeCheck = () => {
+    setInfo((prev) => ({
+      ...prev,
+      check: !info.check
+    }))
   }
 
   return (
@@ -69,20 +80,14 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.wrapper}>
           <InfoInputForm
-            email={email}
-            setEmail={setEmail}
-            phone={phone}
+            info={info}
             phoneRef={phoneRef}
             onChangePhone={onChangePhone}
-            ages={ages}
-            setAges={setAges}
-            sex={sex}
-            setSex={setSex}
           />
-          <Privacy check={check} setCheck={setCheck} />
+          <Privacy check={info.check} onChangeCheck={onChangeCheck} />
         </div>
         <div className={styles.btnCenter} onClick={onClickNext}>
-          <button disabled={!check}>넘어가기</button>
+          <button disabled={!info.check}>넘어가기</button>
         </div>
       </main>
     </>

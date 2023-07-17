@@ -1,21 +1,17 @@
 import React, { ChangeEvent } from 'react'
 import styles from "./InfoInputForm.module.css"
+import { simpleInfo } from '@/types';
 
 const agesRange = ["10대", "20대", "30대", "40대", "50대", "60대", "70대 이상"];
 
 interface InfoInputFormProps {
-  email: string;
-  setEmail: (value: string) => void;
-  phone: string;
+  info: simpleInfo;
   phoneRef: React.RefObject<HTMLInputElement>;
   onChangePhone: (e: ChangeEvent<HTMLInputElement>) => void;
-  ages: string;
-  setAges: (value: string) => void;
-  sex: string;
-  setSex: (value: string) => void;
+  onChangeHandle: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, setAges, sex, setSex }: InfoInputFormProps) => {
+const InfoInputForm = ({ info, phoneRef, onChangePhone, onChangeHandle }: InfoInputFormProps) => {
   return (
     <div className={styles.layout}>
       <div className={styles.inputRow}>
@@ -24,8 +20,9 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
       </div>
         <input
           type={"email"}
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          name="email"
+          onChange={onChangeHandle}
+          value={info?.email}
           placeholder="example@example.com"
         />
       </div>
@@ -37,7 +34,8 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
         <input
           type={"text"}
           onChange={onChangePhone}
-          value={phone}
+          name="phone"
+          value={info.phone}
           ref={phoneRef}
           placeholder=" '-' 없이 핸드폰 입력"
         />
@@ -54,8 +52,8 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
                 type={"radio"}
                 name="ages"
                 value={age}
-                checked={age === ages}
-                onChange={(e) => setAges(e.target.value)}
+                checked={age === info.ages}
+                onChange={onChangeHandle}
               />
               {age}
             </label>
@@ -73,8 +71,8 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
               type={"radio"}
               name="sex"
               value={"남"}
-              checked={"남" === sex}
-              onChange={(e) => setSex(e.target.value)}
+              checked={"남" === info.sex}
+              onChange={onChangeHandle}
             />
             남
           </label>
@@ -83,8 +81,8 @@ const InfoInputForm = ({ email, setEmail, phone, phoneRef, onChangePhone, ages, 
               type={"radio"}
               name="sex"
               value={"여"}
-              checked={"여" === sex}
-              onChange={(e) => setSex(e.target.value)}
+              checked={"여" === info.sex}
+              onChange={onChangeHandle}
             />
             여
           </label>
