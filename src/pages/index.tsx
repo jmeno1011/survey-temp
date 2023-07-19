@@ -1,14 +1,17 @@
 import Head from 'next/head'
 import Header from '@/components/home/Header'
 import InfoInputForm from '@/components/home/InfoInputForm'
-import { ChangeEvent, useRef, useState } from 'react'
+import { ChangeEvent, use, useRef, useState } from 'react'
 import Privacy from '@/components/home/Privacy';
 import styles from "@/styles/Home.module.css";
 import { useRouter } from 'next/router';
 import { user } from '@/types';
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from '@/modules/user';
 
 export default function Home() {
   let router = useRouter();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState<user>({
     phone: '',
@@ -57,8 +60,8 @@ export default function Home() {
     } else {
       router.push('/survey')
     }
-
-    console.log("user", user);
+    dispatch(setUserInfo(user));
+    // console.log("user", user);
   }
 
   const onChangeCheck = () => {
@@ -68,14 +71,14 @@ export default function Home() {
     }))
   }
 
-  const onChangeHandle = (e: ChangeEvent<HTMLInputElement>)=>{
-    const {name, value} = e.target;
-    setUser(prev=>({
+  const onChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser(prev => ({
       ...prev,
       [name]: value
     }))
   }
-  
+
   return (
     <>
       <Head>

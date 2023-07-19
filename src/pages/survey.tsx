@@ -6,14 +6,19 @@ import { score } from '@/types';
 import { ref, set } from 'firebase/database';
 import { database } from '../../firebaseInit';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/modules';
 
 const survey = () => {
   let router = useRouter();
   const [scoreArray, setScoreArray] = useState<score[]>([]);
-  const saveScoreInArray = ()=>{
+  const { userInfo } = useSelector((state: RootState) => state);
+  console.log('userInfo - redux::', userInfo);
+
+  const saveScoreInArray = () => {
 
   }
-  const onSubmit = (e:FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (Object.keys(scoreArray).length !== 6) {
       alert("문진을 모두 진행해주세요!");
@@ -48,22 +53,22 @@ const survey = () => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-            <div>
-              {QuestionList.map((question, index) => (
-                <Question
-                  key={question.id}
-                  index={index + 1}
-                  questionId={question.id}
-                  questionText={question.question}
-                  scoreArray={scoreArray}
-                  saveScoreInArray={saveScoreInArray}
-                />
-              ))}
-            </div>
-            <div className="form-button">
-              <button>결과 저장</button>
-            </div>
-          </form>
+        <div>
+          {QuestionList.map((question, index) => (
+            <Question
+              key={question.id}
+              index={index + 1}
+              questionId={question.id}
+              questionText={question.question}
+              scoreArray={scoreArray}
+              saveScoreInArray={saveScoreInArray}
+            />
+          ))}
+        </div>
+        <div className="form-button">
+          <button>결과 저장</button>
+        </div>
+      </form>
     </div>
   )
 }
