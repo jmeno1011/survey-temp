@@ -2,7 +2,7 @@ export interface score {
   [key: string]: string
 }
 
-export interface simpleInfo {
+export interface user {
   email?: string;
   phone: string;
   ages: string;

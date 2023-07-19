@@ -5,12 +5,12 @@ import { ChangeEvent, useRef, useState } from 'react'
 import Privacy from '@/components/home/Privacy';
 import styles from "@/styles/Home.module.css";
 import { useRouter } from 'next/router';
-import { simpleInfo } from '@/types';
+import { user } from '@/types';
 
 export default function Home() {
   let router = useRouter();
 
-  const [info, setInfo] = useState<simpleInfo>({
+  const [user, setUser] = useState<user>({
     phone: '',
     ages: '',
     sex: '',
@@ -38,7 +38,7 @@ export default function Home() {
         result += value[i];
       }
       phoneRef.current.value = result;
-      setInfo((prev) => ({
+      setUser((prev) => ({
         ...prev,
         phone: e.target.value
       }));
@@ -46,31 +46,31 @@ export default function Home() {
   }
 
   const onClickNext = () => {
-    if (info.phone === "" || info.phone.length !== 13) {
+    if (user.phone === "" || user.phone.length !== 13) {
       alert("핸드폰 번호를 입력해주세요.");
-    } else if (info.sex === "") {
+    } else if (user.sex === "") {
       alert("성별을 선택해주세요.");
-    } else if (info.ages === "") {
+    } else if (user.ages === "") {
       alert("연령대를 선택해주세요.");
-    } else if (!info.check) {
+    } else if (!user.check) {
       alert("개인정보 수집/이용에 동의해주세요.");
     } else {
       router.push('/survey')
     }
 
-    console.log("info", info);
+    console.log("user", user);
   }
 
   const onChangeCheck = () => {
-    setInfo((prev) => ({
+    setUser((prev) => ({
       ...prev,
-      check: !info.check
+      check: !user.check
     }))
   }
 
   const onChangeHandle = (e: ChangeEvent<HTMLInputElement>)=>{
     const {name, value} = e.target;
-    setInfo(prev=>({
+    setUser(prev=>({
       ...prev,
       [name]: value
     }))
@@ -88,15 +88,15 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.wrapper}>
           <InfoInputForm
-            info={info}
+            user={user}
             phoneRef={phoneRef}
             onChangePhone={onChangePhone}
             onChangeHandle={onChangeHandle}
           />
-          <Privacy check={info.check} onChangeCheck={onChangeCheck} />
+          <Privacy check={user.check} onChangeCheck={onChangeCheck} />
         </div>
         <div className={styles.btnCenter} onClick={onClickNext}>
-          <button disabled={!info.check}>넘어가기</button>
+          <button disabled={!user.check}>넘어가기</button>
         </div>
       </main>
     </>
