@@ -1,23 +1,19 @@
-import React, { FormEvent, useState } from 'react'
-import { QuestionList } from '@/data';
-import Question from '@/components/survey/Question';
+import React, { FormEvent, useState } from "react";
+import { QuestionList } from "@/data";
+import Question from "@/components/survey/Question";
 import { v4 as uuidv4 } from "uuid";
-import { score } from '@/types';
-import { ref, set } from 'firebase/database';
-import { database } from '../../firebaseInit';
-import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/modules';
+import { Score } from "@/types";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { RootState } from "@/modules";
 
-const survey = () => {
+const Survey = () => {
   let router = useRouter();
-  const [scoreArray, setScoreArray] = useState<score[]>([]);
+  const [scoreArray, setScoreArray] = useState<Score[]>([]);
   const { userInfo } = useSelector((state: RootState) => state);
-  console.log('userInfo - redux::', userInfo);
+  console.log("userInfo - redux::", userInfo);
 
-  const saveScoreInArray = () => {
-
-  }
+  const saveScoreInArray = () => {};
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (Object.keys(scoreArray).length !== 6) {
@@ -41,13 +37,6 @@ const survey = () => {
         // event: "비동의",
         // ageRange: ages,
       };
-      set(ref(database, `dslsCollection/` + uuid), data)
-        .then(() => {
-          router.push(`${uuid}/result`);
-        })
-        .catch((error) => {
-          console.log("error:", error);
-        });
     }
   };
   return (
@@ -70,7 +59,7 @@ const survey = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default survey
+export default Survey;

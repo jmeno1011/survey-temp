@@ -1,23 +1,22 @@
-import Head from 'next/head'
-import Header from '@/components/home/Header'
-import InfoInputForm from '@/components/home/InfoInputForm'
-import { ChangeEvent, use, useRef, useState } from 'react'
-import Privacy from '@/components/home/Privacy';
+import Head from "next/head";
+import InfoInputForm from "@/components/home/InfoInputForm";
+import { ChangeEvent, use, useRef, useState } from "react";
+import Privacy from "@/components/home/Privacy";
 import styles from "@/styles/Home.module.css";
-import { useRouter } from 'next/router';
-import { user } from '@/types';
-import { useDispatch } from 'react-redux';
-import { setUserInfo } from '@/modules/user';
+import { useRouter } from "next/router";
+import { User } from "@/types";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "@/modules/user";
 
 export default function Home() {
   let router = useRouter();
   const dispatch = useDispatch();
 
-  const [user, setUser] = useState<user>({
-    phone: '',
-    ages: '',
-    sex: '',
-    check: false
+  const [user, setUser] = useState<User>({
+    phone: "",
+    ages: "",
+    sex: "",
+    check: false,
   });
 
   const phoneRef = useRef<HTMLInputElement>(null);
@@ -43,10 +42,10 @@ export default function Home() {
       phoneRef.current.value = result;
       setUser((prev) => ({
         ...prev,
-        phone: e.target.value
+        phone: e.target.value,
       }));
     }
-  }
+  };
 
   const onClickNext = () => {
     if (user.phone === "" || user.phone.length !== 13) {
@@ -58,26 +57,30 @@ export default function Home() {
     } else if (!user.check) {
       alert("개인정보 수집/이용에 동의해주세요.");
     } else {
-      router.push('/survey')
+      // query로 데이터 넘길수 있음
+      // router.push({
+      //   pathname: "/survey",
+      //   query: { ...user },
+      // });
+      router.push("/survey");
+      dispatch(setUserInfo(user));
     }
-    dispatch(setUserInfo(user));
-    // console.log("user", user);
-  }
+  };
 
   const onChangeCheck = () => {
     setUser((prev) => ({
       ...prev,
-      check: !user.check
-    }))
-  }
+      check: !user.check,
+    }));
+  };
 
   const onChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUser(prev => ({
+    setUser((prev) => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -87,7 +90,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <main className={styles.main}>
         <div className={styles.wrapper}>
           <InfoInputForm
@@ -103,5 +105,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
