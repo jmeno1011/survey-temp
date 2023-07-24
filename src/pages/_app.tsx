@@ -1,26 +1,45 @@
 import Banner from "@/components/common/Banner";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import type { AppProps } from "next/app";
+import type { AppContext, AppInitialProps, AppProps } from "next/app";
 import { Provider } from "react-redux";
 import rootReducer from "@/modules";
 import "@/styles/globals.css";
 import Header from "@/components/common/Header/Header";
 import { useRouter } from "next/router";
+import App from "next/app";
+
+interface AppInitProps {
+  bannerState: boolean;
+}
 
 const store = configureStore({
   reducer: rootReducer,
   devTools: true,
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function MyApp({
+  Component,
+  pageProps,
+  bannerState,
+}: AppProps & AppInitProps) {
   const router = useRouter();
   return (
     <Provider store={store}>
       <div className="layout">
-        <Banner />
+        {bannerState && <Banner />}
         {router.pathname.includes("/result") ? null : <Header />}
         <Component {...pageProps} />
       </div>
     </Provider>
   );
 }
+
+MyApp.getInitialProps = async (
+  context: AppContext
+): Promise<AppInitProps & AppInitialProps> => {
+  const ctx = await App.getInitialProps(context);
+  return {
+    ...ctx,
+    bannerState: true,
+  };
+};
