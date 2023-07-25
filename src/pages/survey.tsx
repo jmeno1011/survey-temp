@@ -1,11 +1,12 @@
 import React, { FormEvent, useState } from "react";
 import { QuestionList } from "@/data";
-import Question from "@/components/survey/Question";
+import Question from "@/components/survey/Question/Question";
 import { v4 as uuidv4 } from "uuid";
 import { Score } from "@/types";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "@/modules";
+import styles from "../styles/Survey.module.css";
 
 const Survey = () => {
   let router = useRouter();
@@ -37,25 +38,23 @@ const Survey = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <div>
-          {QuestionList.map((question, index) => (
-            <Question
-              key={question.id}
-              index={index + 1}
-              questionId={question.id}
-              questionText={question.question}
-              scoreArray={scoreArray}
-              saveScoreInArray={saveScoreInArray}
-            />
-          ))}
-        </div>
-        <div className="form-button">
-          <button>결과 저장</button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={onSubmit} className={styles.container}>
+      <div>
+        {QuestionList.map((question, index) => (
+          <Question
+            key={question.id}
+            index={index + 1}
+            questionId={question.id}
+            questionTitle={question.question}
+            scoreArray={scoreArray}
+            saveScoreInArray={saveScoreInArray}
+          />
+        ))}
+      </div>
+      <div className="form-button">
+        <button>결과 저장</button>
+      </div>
+    </form>
   );
 };
 
