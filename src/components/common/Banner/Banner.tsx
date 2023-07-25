@@ -1,6 +1,7 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 import banner from "@/assets/banner.jpg";
+import styles from "./Banner.module.css";
 
 const Banner = () => {
   return (
@@ -13,7 +14,7 @@ const Banner = () => {
               100%"
       />
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

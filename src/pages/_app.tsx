@@ -1,4 +1,4 @@
-import Banner from "@/components/common/Banner";
+import Banner from "@/components/common/Banner/Banner";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import type { AppContext, AppInitialProps, AppProps } from "next/app";
 import { Provider } from "react-redux";

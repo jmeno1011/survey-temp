@@ -26,16 +26,13 @@ const Survey = () => {
       // );
 
       const data = {
-        // email: email,
-        // phone: phone,
-        // sex: sex,
+        ...userInfo,
         // scores: scoreArr,
         // total: total,
         // dmslsLevel: setDmslsLevel(scoreArr, total),
         // createAt: Date.now(),
         // agreement: check ? "동의" : "비동의",
         // event: "비동의",
-        // ageRange: ages,
       };
     }
   };
