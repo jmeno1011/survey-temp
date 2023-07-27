@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import Header from "@/components/common/Header/Header";
 import { useRouter } from "next/router";
 import App from "next/app";
+import { bannerUrl } from "@/lib/const/common";
 
 interface AppInitProps {
   bannerState: boolean;
@@ -26,7 +27,7 @@ export default function MyApp({
   return (
     <Provider store={store}>
       <div className="layout">
-        {bannerState && <Banner />}
+        {bannerState && <Banner srcUrl={bannerUrl} />}
         {router.pathname.includes("/result") ? null : <Header />}
         <Component {...pageProps} />
       </div>
