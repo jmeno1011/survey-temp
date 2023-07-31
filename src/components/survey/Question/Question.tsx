@@ -23,9 +23,13 @@ const Question = ({
       <h3 className={styles.title}>{questionTitle}</h3>
       <div className={styles.btnGroup}>
         {scoreRange.map((score) => (
-          <div key={`${questionId}_${score.id}`}>
-            <input type={"radio"} name="" />
-          </div>
+          <label
+            className={styles.radioLabel}
+            key={`${questionId}_${score.id}`}
+          >
+            {score.score}
+            <input type={"radio"} name={questionId} />
+          </label>
         ))}
       </div>
     </div>

@@ -31,6 +31,34 @@ interface ScoreRange {
   text: string;
 }
 
+/**
+ * {
+    id: "1번",
+    score: 1,
+    text: "1점",
+  },
+  {
+    id: "2번",
+    score: 2,
+    text: "2점",
+  },
+  {
+    id: "3번",
+    score: 3,
+    text: "3점",
+  },
+  {
+    id: "4번",
+    score: 4,
+    text: "4점",
+  },
+  {
+    id: "5번",
+    score: 5,
+    text: "5점",
+  },
+ */
+
 export const scoreRange: ScoreRange[] = [
   {
     id: "1번",

@@ -7,9 +7,45 @@
   font-weight: 600;
 }
 .btnGroup {
-  display: flex;
-}
-.btnGroup input {
-  display: inline-block;
   padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.btnGroup label {
+  border-radius: 50%;
+}
+.radioLabel input[type="radio"] {
+  display: none;
+  padding: 1rem;
+}
+
+.btnGroup label:first-child,
+.btnGroup label:last-child {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid blueviolet;
+}
+
+.btnGroup label:nth-child(2),
+.btnGroup label:nth-child(4) {
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid blueviolet;
+}
+
+.btnGroup label:nth-child(3) {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid blueviolet;
 }
