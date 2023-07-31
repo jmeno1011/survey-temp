@@ -1,23 +1,28 @@
-import React, { ChangeEvent } from 'react'
-import styles from "./InfoInputForm.module.css"
-import { user } from '@/types';
+import React, { ChangeEvent } from "react";
+import styles from "./InfoInputForm.module.css";
+import { User } from "@/types";
 
 const agesRange = ["10대", "20대", "30대", "40대", "50대", "60대", "70대 이상"];
 
 interface InfoInputFormProps {
-  user: user;
+  user: User;
   phoneRef: React.RefObject<HTMLInputElement>;
   onChangePhone: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeHandle: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InfoInputForm = ({ user, phoneRef, onChangePhone, onChangeHandle }: InfoInputFormProps) => {
+const InfoInputForm = ({
+  user,
+  phoneRef,
+  onChangePhone,
+  onChangeHandle,
+}: InfoInputFormProps) => {
   return (
     <div className={styles.layout}>
       <div className={styles.inputRow}>
-      <div className={styles.inputRowLabel}>
-        <label>이메일 </label>
-      </div>
+        <div className={styles.inputRowLabel}>
+          <label>이메일 </label>
+        </div>
         <input
           type={"email"}
           name="email"
@@ -41,10 +46,10 @@ const InfoInputForm = ({ user, phoneRef, onChangePhone, onChangeHandle }: InfoIn
         />
       </div>
       <div className={styles.inputRow}>
-      <div className={styles.inputRowLabel}>
-      <span></span>
-        <label>연령 선택 </label>
-      </div>
+        <div className={styles.inputRowLabel}>
+          <span></span>
+          <label>연령 선택 </label>
+        </div>
         <div className={styles.inputRadio}>
           {agesRange.map((age: string) => (
             <label key={age}>
@@ -61,10 +66,10 @@ const InfoInputForm = ({ user, phoneRef, onChangePhone, onChangeHandle }: InfoIn
         </div>
       </div>
       <div className={styles.inputRow}>
-      <div className={styles.inputRowLabel}>
-        <span></span>
-        <label>성별 </label>
-      </div>
+        <div className={styles.inputRowLabel}>
+          <span></span>
+          <label>성별 </label>
+        </div>
         <div className={styles.inputRadio}>
           <label>
             <input
@@ -89,7 +94,7 @@ const InfoInputForm = ({ user, phoneRef, onChangePhone, onChangeHandle }: InfoIn
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InfoInputForm
+export default InfoInputForm;

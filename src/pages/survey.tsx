@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "@/modules";
 import styles from "../styles/Survey.module.css";
+import Button from "@/components/common/Button/Button";
 
 const Survey = () => {
   let router = useRouter();
@@ -51,9 +52,7 @@ const Survey = () => {
           />
         ))}
       </div>
-      <div className="form-button">
-        <button>결과 저장</button>
-      </div>
+      <Button text={"결과 저장"} onClick={onSubmit} />
     </form>
   );
 };

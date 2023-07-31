@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { User } from "@/types";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "@/modules/user";
+import Button from "@/components/common/Button/Button";
 
 export default function Home() {
   let router = useRouter();
@@ -100,9 +101,11 @@ export default function Home() {
           />
           <Privacy check={user.check} onChangeCheck={onChangeCheck} />
         </div>
-        <div className={styles.btnCenter} onClick={onClickNext}>
-          <button disabled={!user.check}>넘어가기</button>
-        </div>
+        <Button
+          disabled={!user.check}
+          onClick={onClickNext}
+          text={"넘어가기"}
+        />
       </main>
     </>
   );
