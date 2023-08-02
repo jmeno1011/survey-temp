@@ -15,10 +15,11 @@
 }
 .btnGroup label {
   border-radius: 50%;
+  cursor: pointer;
 }
 .radioLabel input[type="radio"] {
-  display: none;
   padding: 1rem;
+  display: none;
 }
 
 .btnGroup label:first-child,

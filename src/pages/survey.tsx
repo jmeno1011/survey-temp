@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { QuestionList } from "@/data";
 import Question from "@/components/survey/Question/Question";
 import { v4 as uuidv4 } from "uuid";
@@ -11,11 +11,18 @@ import Button from "@/components/common/Button/Button";
 
 const Survey = () => {
   let router = useRouter();
-  const [scoreArray, setScoreArray] = useState<Score[]>([]);
+  const [scoreArray, setScoreArray] = useState<Score>({});
   const { userInfo } = useSelector((state: RootState) => state);
   console.log("userInfo - redux::", userInfo);
 
-  const saveScoreInArray = () => {};
+  const saveScoreInArray = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setScoreArray((prev: Score) => ({
+      ...prev,
+      [name]: Number(value),
+    }));
+  };
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (Object.keys(scoreArray).length !== 6) {

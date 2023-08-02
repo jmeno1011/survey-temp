@@ -1,5 +1,5 @@
 import { Score } from "@/types";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { scoreRange } from "../../../data/question";
 import styles from "./Question.module.css";
 
@@ -7,12 +7,11 @@ interface QuestionProps {
   index: number;
   questionId: string;
   questionTitle: string;
-  scoreArray: Score[];
-  saveScoreInArray: () => void;
+  scoreArray: Score;
+  saveScoreInArray: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Question = ({
-  index,
   questionId,
   questionTitle,
   scoreArray,
@@ -28,7 +27,13 @@ const Question = ({
             key={`${questionId}_${score.id}`}
           >
             {score.score}
-            <input type={"radio"} name={questionId} />
+            <input
+              type={"radio"}
+              name={questionId}
+              value={score.score}
+              onChange={saveScoreInArray}
+              checked={scoreArray[questionId] === score.score}
+            />
           </label>
         ))}
       </div>
