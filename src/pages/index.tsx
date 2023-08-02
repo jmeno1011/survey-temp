@@ -14,6 +14,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState<User>({
+    email: "",
     phone: "",
     ages: "",
     sex: "",

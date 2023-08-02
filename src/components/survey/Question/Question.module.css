@@ -1,5 +1,5 @@
 .container {
-  padding: 0.25rem 0;
+  padding: 1rem;
 }
 .title {
   text-align: center;
@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border-bottom: 1px solid silver;
 }
 .btnGroup label {
   border-radius: 50%;
@@ -21,32 +22,35 @@
   padding: 1rem;
   display: none;
 }
+.radioLabel:has(input[type="radio"]:checked) {
+  background-color: blueviolet;
+  color: #fff;
+}
+.radioLabel:hover {
+  background-color: rgb(197, 150, 241);
+  color: #fff;
+}
+
+.btnGroup label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid blueviolet;
+}
 
 .btnGroup label:first-child,
 .btnGroup label:last-child {
   height: 48px;
   width: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid blueviolet;
 }
 
 .btnGroup label:nth-child(2),
 .btnGroup label:nth-child(4) {
   height: 36px;
   width: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid blueviolet;
 }
 
 .btnGroup label:nth-child(3) {
   height: 30px;
   width: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid blueviolet;
 }

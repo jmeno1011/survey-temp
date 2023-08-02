@@ -13,7 +13,7 @@ const Survey = () => {
   let router = useRouter();
   const [scoreArray, setScoreArray] = useState<Score>({});
   const { userInfo } = useSelector((state: RootState) => state);
-  console.log("userInfo - redux::", userInfo);
+  // console.log("userInfo - redux::", userInfo);
 
   const saveScoreInArray = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -22,6 +22,7 @@ const Survey = () => {
       [name]: Number(value),
     }));
   };
+  // console.log(scoreArray);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -29,19 +30,22 @@ const Survey = () => {
       alert("문진을 모두 진행해주세요!");
     } else {
       const uuid = uuidv4();
-      // const total = Object.values(scoreArray).reduce(
-      //   (prev, curr) => prev + curr.score,
-      //   0
-      // );
+      const total = Object.values(scoreArray).reduce(
+        (prev, curr) => prev + curr,
+        0
+      );
 
       const data = {
-        ...userInfo,
-        // scores: scoreArr,
-        // total: total,
-        // dmslsLevel: setDmslsLevel(scoreArr, total),
-        // createAt: Date.now(),
-        // agreement: check ? "동의" : "비동의",
-        // event: "비동의",
+        uuid: uuid,
+        email: userInfo.email,
+        sex: userInfo.sex,
+        phone: userInfo.phone,
+        ages: userInfo.ages,
+        scores: scoreArray,
+        total: total,
+        createAt: Date.now(),
+        agreement: userInfo.check ? "동의" : "비동의",
+        event: "비동의",
       };
     }
   };
