@@ -3,7 +3,7 @@ export interface Score {
 }
 
 export interface User {
-  email: string;
+  email?: string;
   phone: string;
   ages: string;
   sex: string;

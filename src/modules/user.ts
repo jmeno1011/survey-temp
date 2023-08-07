@@ -1,20 +1,20 @@
-import { user } from "@/types";
+import { User } from "@/types";
 
 const SET_USER_INFO = 'user/SET_USER_INFO';
 
-export const setUserInfo = (user: user) =>
+export const setUserInfo = (user: User) =>
   ({ type: SET_USER_INFO, payload: user });
 
 type UserAction = ReturnType<typeof setUserInfo>
 
-const initialState: user = {
+const initialState: User = {
   phone: '',
   ages: '',
   sex: '',
   check: false
 }
 
-const userInfo = (state: user = initialState, action: UserAction) => {
+const userInfo = (state: User = initialState, action: UserAction) => {
   switch (action.type) {
     case SET_USER_INFO:
       return action.payload
