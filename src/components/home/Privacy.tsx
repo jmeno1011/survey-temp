@@ -52,7 +52,7 @@ const Privacy = ({ check, onChangeCheck }: PrivacyProps) => {
           </label>
 
           <p>
-            이 서비스를 이용할 경우 제공된 정보는 귀하의 마음건강에
+            이 서비스를 이용할 경우 제공된 정보는 귀하의 일생에
             도움을 주기 위한 것으로 수집됨에 있어 동의합니다.
           </p>
         </div>
