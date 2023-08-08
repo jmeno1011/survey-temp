@@ -20,22 +20,26 @@ const Question = ({
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>{questionTitle}</h3>
-      <div className={styles.btnGroup}>
-        {scoreRange.map((score) => (
-          <label
-            className={styles.radioLabel}
-            key={`${questionId}_${score.id}`}
-          >
-            {score.score}
-            <input
-              type={"radio"}
-              name={questionId}
-              value={score.score}
-              onChange={saveScoreInArray}
-              checked={scoreArray[questionId] === score.score}
-            />
-          </label>
-        ))}
+      <div className={styles.wrapper}>
+        <span>전혀 그렇지 않다.</span>
+        <div className={styles.btnGroup}>
+          {scoreRange.map((score) => (
+            <label
+              className={styles.radioLabel}
+              key={`${questionId}_${score.id}`}
+            >
+              {score.score}
+              <input
+                type={"radio"}
+                name={questionId}
+                value={score.score}
+                onChange={saveScoreInArray}
+                checked={scoreArray[questionId] === score.score}
+              />
+            </label>
+          ))}
+        </div>
+        <span>항상 그렇다.</span>
       </div>
     </div>
   );

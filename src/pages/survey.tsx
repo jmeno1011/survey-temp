@@ -47,6 +47,8 @@ const Survey = () => {
         agreement: userInfo.check ? "동의" : "비동의",
         event: "비동의",
       };
+      console.log(data);
+      
     }
   };
   return (
